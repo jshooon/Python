@@ -1,0 +1,172 @@
+
+ Collection 정보를 저장하는 것은 주로 Collection을 통하여 저장한다.
+
+ Python의 Collection 종류 
+  * list, set, tuple, dictionary 
+  - list : 순서유지, 중복허용 
+  - set : 순서없음, 중복불허 
+  - tuple : list와 동일특성, 단, 수정/삭제 안됨 (수정/삭제 할 필요없다면 튜플 사용) 
+  - dictionary : Key와 Value가 쌍으로 저장되는 자료구조. (회원의 id와 정보를 저장할 때 사용하면 좋다) 
+
+---------------------------------------------------------------------------------------------------------
+
+실습 문제
+
+프로그램이 시작된다면, 
+아래처럼 메뉴 목록을 제시한다.
+추가(a), 목록(s), 검색(f), 수정(u), 삭제(d), 종료(x)
+
+추가기능(a)
+이용자가 'a'를 입력한 경우, 
+" 사원의 번호 이름 전화 : "
+
+이용자가 사원정보를 3가지를 입력한 경우,
+한 사원의 정보를 Collection에 저장한다.
+
+기능이 끝난다면 다시 메뉴목록을 제시한다.
+추가(a), 목록(s), 검색(f), 수정(u), 삭제(d), 종료(x)
+
+이미 등록된 사원정보 중에서 새로 입력된 사원번호와 중복되지 않아야 한다.
+
+목록보기 기능(s)
+이용자가 's'를 선택한 경우 화면에 모든 사원정보를 표시하고 이어서 화면에 메뉴가 표시된다.
+
+검색기능(f)
+이름으로 검색하기, 대소문자 구분 없이 검색된 사원정보가 화면에 표시되고 이어서 화면에 메뉴 표시
+
+수정기능(u)
+이용자가 'u'를 선택한경우, "수정할 사원번호 전화번호: "
+입력된 사원번호로 검색하여 해당 사원의 전화번호를 갱신한 후 "수정 성공/실패" 메시지 출력
+
+삭제기능(d)
+이용자가 'd'를 선택한 경우,
+"삭제할 사원번호 : "
+삭제 후 "삭제 성공/실패"
+
+---------------------------------------------------------------------------------------------------------
+
+Python 함수 호출 방법
+def(java의 public ....) 작성하고 함수명을 사용하면 된다. 리턴 타입도 필요없다.
+ex) 
+1.
+def greet_user():
+	"""Display a simple greeting.""" //주석문 / """ """ 는 다중행 주석문 가능
+	print("Hello!")
+greet_user()
+
+2.
+def greet_user(username):
+	"""Display a simple greeting.""" 
+	print("Hello, {username.title()}!")
+greet_user('jesse')
+
+3. 포지션 아규먼트 : 위치가 중요하다.
+def greet_user(username, age): 
+	"""Display a simple greeting.""" 
+	print(f"\nMy name is {username}.")
+	print(f"My name is {username}, i'm {age} old.")
+greet_user('jesse', 13)
+
+4. 키워드 아규먼트 : 순서가 정해져 있기 때문에 위치중요 X
+def greet_user(username, age): 
+	"""Display a simple greeting.""" 
+	print(f"\nMy name is {username}.")
+	print(f"My name is {username}, i'm {age} old.")
+greet_user(age = 13, username = 'jesse') // 위치가 바뀌어도 상관 없다.
+
+5. 디폴트 아규먼트 : 인자값을 넣어 주지 않아도 디폴트 값이 정해져 있기때문에 
+	인자값이 없다면 디폴트값이 적용되며, 만약 인자값을 명시한다면 인자값으로 적용됨.
+	디폴트 값 갖는 매개변수는 맨 뒤에 작성한다.
+def greet_user(username, age = 13): 
+	"""Display a simple greeting.""" //
+	print(f"\nMy name is {username}.")
+	print(f"My name is {username}, i'm {age} old.")
+greet_user(username = 'jesse') // 
+
+
+names = ['a','b']
+if names: // names에 원소가 있으면 True, 없으면 false;
+
+function_name(list_name[:]) 함수에 deepCopy한 리스트를 넣는다. list원본엔 지장 없음.
+
+
+---------------------------------------------------------------------------------------------------------
+
+1.
+중복인지 아닌지를 검사해서 그 결과를 리턴하는 함수 작성
+is_duplicate True : 중복임; False : 중복아님
+
+2.
+목록보기 기능의 함수 만들기-> emp_list()
+
+3.
+검색기능 : 이름을 파라미터로 받아서 해당 사원의 정보를 검색하고 리턴하는 함수 만들기.
+find_emp(name)
+ - 검색결과가 없는 경우에는 None을 리턴.
+
+4.
+수정기능 : 입력받은 번호와 전화번호를 (num,phone)튜플을 받아서 목록을 수정하고, 
+성공시 True, 실패시 False 리턴
+update_emp(tuple)
+
+5.
+삭제기능 : 사원번호를 받아서 해당 사원정보를 삭제하고 결과를 True/False 리턴
+delete_emp(num)
+
+---------------------------------------------------------------------------------------------------------
+
+아규먼트 개수를 정해놓지 않았을때 *를 사용하면 몇개가 들어오든지 상관이 없다. 
+*이 있다면 아규먼트 여러개를 받을 수 있다. tuple로 받는다.
+ex)
+def make_pizza(*toppings):
+	print(toppings)
+
+make_pizza('pepperoni') // 한개가능
+make_('mushrooms', 'green peppers', 'extra cheese') // 여러개 가능
+
+
+이런식으로도 가능하다.
+def make_pizza(size, *toppings):
+	print(toppings)
+
+make_pizza(16, 'pepperoni') 
+make_(12, 'mushrooms', 'green peppers', 'extra cheese')
+
+---------------------------------------------------------------------------------------------------------
+
+** 별 두개는 key와 value가 짝지어진 경우의 아규먼트를 몇개든 받겠다는 것이다.
+def make_pizza(size, **toppings):
+	print(toppings)
+make_pizza(16, 'kinds' = 'pepperoni')
+
+---------------------------------------------------------------------------------------------------------
+
+import할 Python파일은 Python디렉토리에 저장 해야한다.
+
+# import 방법 1
+import sample
+
+# import 방법 2
+from sample import add
+
+# import 방법 3
+import sample as s
+
+# import 방법 4
+from sample import *
+
+---------------------------------------------------------------------------------------------------------
+
+Python 클래스 생성방법은 아래와 같다. python의 클래스는 객체주소가 꼭 필요하다.
+인스턴스객체는 꼭 객체주소가 필요하다. __init__ 초기자 메소드를 생성한다.
+class Dog:
+	def __init__ (self, name, age): // self = 참조받을 객체 주소를 받는다.
+	self.name = name // self객체에 있는 name에 들어온 name값을 저장한다.
+	self.age = age // self객체에 있는 age에 들어온 age값을 저장한다.
+
+	def __str__(self):
+		return (f"{self.num}\t{self.name}\t{self.phone}") = java의 toString과 같다.
+
+	def __eq__(self, other):
+		return self.num == other.num = java의 equlse와 같다.
+

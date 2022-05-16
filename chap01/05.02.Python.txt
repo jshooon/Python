@@ -1,0 +1,60 @@
+키보드에서 회원의 정보를 입력받아서 리스트에 저장하는 프로그램 작성.
+3인의 회원정보를 입력 받아서 리스트에 저장하고, 화면에 표시
+
+Python
+
+JavaScript의 obj에 제이슨 오브젝트를 넣는방법과 같다.
+ var obj = {};
+ name = [] 
+
+
+list CRUD
+  - C : append()
+  - R : name[0]
+  - U : name[0] = 'Koon'
+  - D : name.remove('Koon'), or del name[0]
+
+수정기능
+  - 리스트에 포함된 모든 정보를 출력
+  - 리스트 하단에 수정할 회원번호와 새 전화번호 입력해주세요.
+  - 리스트를 다시 출력한다.
+
+Python if문
+
+if a==b:
+ print(xxx) 
+
+삭제기능
+   - 리스트 하단에 '삭제할 회원번호 : '
+   - 입력받은 후 리스트에서 해당 회원정보(num, name, phone)를 삭제.
+   - 삭제를 위한 회원번호가 발견되지 않으면 삭제실패 출력.
+
+Python try catch문은 아래와같이 사용한다.
+
+try:
+    idx = num.index(memnum)
+    del num[idx]
+    print('삭제 성공')
+except ValueError as e:
+        print('삭제 실패' + str(e))
+
+# api클래스들마다 리턴값이 다르기때문에 
+# 리턴값이 없다면 원본이 바뀌지만,
+# 리턴값이 있다면 원본이 바뀌지 않는다.
+
+.sort() # 문자열 알파벳순 오름차순 정렬.
+.sort(reverse=True) # 문자열 알파벳순 내림차순 정렬.
+sorted(list) # 오름차순 정렬 
+
+# reverse는 리스트의 정렬순서가아니고, 순서를 앞뒤로 바꾼다.
+.reverse()
+
+len() = list의 size와 문자열의 length와 같다.
+
+import random # random 함수를 사용하기 위한 import
+rd_num = random.randint(0,10) # 0~10사이의 무작위 정수 하나를 가져오는 함수
+
+# 임의의 갯수 한개를 구함(5~10)
+# 위에서 구해진 갯수만큼의 임의의 정수를 구함
+# 구해진 모든 정수를 화면에 표시해 보세요.
+# 표시 예) 1. 6, 2. 7

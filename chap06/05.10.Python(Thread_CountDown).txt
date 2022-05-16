@@ -1,0 +1,38 @@
+Thread를 사용한 CountDown
+
+이용자가 숫자를 입력하면 그 수부터 0까지 1초에 한번씩
+숫자를 표시하고 0이 되면 종료
+
+이용자는 기존 카운트다운이 진행되고 있는 도중에라도
+얼마든지 다시 새로운 숫자를 입력할 수 있다.
+
+100 -> 0, 100초 소요
+다른 숫자 입력 n -> 0
+
+현재 CPU가 어떤 루프에 매달리고 있다면 이용자가 숫자를 입력하더라도
+그 수의 카운트다운을 할 수 없다.
+class가 Thread를상속 받았기 때문에
+호출할 때마다 Thread가 생성되어 돌아간다.
+import threading
+import time
+class CountDownThread(threading.Thread):
+    def __init__(self, name, num):
+        threading.Thread.__init__(self)
+        self.name = name
+        self.num = num
+        self.daemon = True
+        
+    def run(self):
+        print(self.name, '쓰레드 시작')
+        while True:
+            self.num -= 1
+            print(self.num)
+            if self.num==0:
+                print(self.name, '쓰레드 종료')
+                break
+            time.sleep(1)
+
+숫자 입력 > Thread 객체에 숫자를 전달 > Thread.start()
+num = input('카운트 다운 수 입력:')
+cdt = CountDownThread(num,int(num))
+cdt.start()

@@ -1,0 +1,92 @@
+클래스(인스턴스)를 벗어나는 메소드를 함수라 한다.
+클래스(인스턴스)안에 사용하는 메소드를 클래스메소드 멤버메소드라 한다.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+print() 함수에는 end='\n' default(기본)값으로 지정 되있다.
+따라서 어떤 객체에도 \n(줄바꿈)기능이 있다면, print()함수를 사용할 때
+end=''로 해줌으로 default값을 재초기화 하거나, 
+줄바꿈 기능이 적용된 객체.rstrip() 을 사용한다. (한행한행 가져올 시)
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+파일을 관리하기 위한 객체를 생성한다.
+그 객체의 타입은 _io.TextIOWrapper 파일에 입출력 기능을 감싼 것.
+그 객체에는 iterator라할 수 있다. __next__()함수 (떠블언더스코어함수는 던더 메소드라불린다.)
+데이터 저장 컬렉션들 중  __getitem__ 함수가 있거나, __iter__, __next__ 가 있다면, 대부분 
+iterator클래스와 인스턴스들은 __geitem__이 있다. 이런 함수들이 포함된 객체들은 반복문을 사용할 수 있다.
+(반복문을 사용하여, 데이터 한행한행을 가져올 수 있다.)
+방번호를 입력해줘야 값을 가져올 수 있던, list도 
+iterable인스턴스를 iterator로 변경한다면, __next__()함수가 생김으로 써
+iterator기능을 사용할 수 있다.
+
+ex)
+nums = [1, 2, 3]
+1번째 방법 (메소드를 사용한다.)
+itr = nums.__iter__()
+2번째 방법(함수를 사용한다)
+iter(nums)
+
+# for루프의 원리 1. __next__()매소드의 실행결과 확인
+fobj = open('emp.py', 'r', encoding = 'utf-8')
+print(fobj.__next__().rstrip())
+fobj.close()
+
+# for루프의 원리 2. next()함수의 실행결과 확인
+fobj = open('emp.py', 'r', encoding = 'utf-8')
+print(next(fobj).rstrip())
+fobj.close()
+
+# 파일 데이터 읽어오기 함수
+from emp import Emp
+def load_emps():
+    emps: []
+    with open('emps.txt', 'r') as emp:
+        for line in fopj:
+            num,name,phone = line.strip().split()
+            emps.append(Emp(num,name,phone))
+    return emps;
+-------------------------------------------------------------------------------------------------------------------------------------
+
+.read() # 파일 정보를 화면출력할 때에 read()를 사용하면 좋다.
+.readlines() # 파일정보를 한행한행 가져오기때문에 분석할 때 좋다.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+파일에 한 행 추가하기 open, append mode로 write한다.
+ex) 
+with open('filename', 'a', encoding ='utf-8') as fobj:
+	fobj.write('14 paul 010-5678-9012\n') \n줌으로 써, 줄바꿈
+with 절이기때문에 .close()안해도된다.
+읽어올때에는 공백을 버리고, 추가할 땐 줄바꿈을 한다.
+
+
+# 파일에 데이터 저장 함수
+def save_emp(emp):
+    line = "{} {} {}".format(emp.num, emp.name, emp.phone)
+    # line = f"{emp.num} {emp.name} {emp.phone}" fstring방식
+    with open('emps.txt', 'a') as emp:
+        emp.write(line + '\n')
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+nums = [3, 4, 5]
+5 in nums = True nums안에 3, 4, 5 하나라도 있다면 True가 나온다.
+
+10 in nums = False nums안에 없기 때문에 False
+
+emps객체에 있는 eq메소드가 실행되며 들어있으면 True가 나온다.
+emp in emps = emp == emps[0], emp == emps[1]....
+
+
+
+
+
+# 선생님 방법
+sNum = input('검색하려는 사원의 번호 : ')
+emp = Emp(sNum.strip())
+found = find_emp(emp)
+if found:
+    print(found)
+else:
+    print('검색실패')

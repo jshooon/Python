@@ -1,0 +1,26 @@
+
+ 빅데이터(통계, ML(머신러닝), AI)
+-1주 : Python(통계, ML, AI) 통계하기위한 언어 R
+-2주 : Python & OpenCV(computer Vision) Python활용
+-3주 : Hadoop(빅데이터 수집, 처리, 저장, 분석) 빅데이터 플랫폼 하둡은 Linux에서 돌아가게끔 되있다.
+	- Linux, Pyspark(데이터 통계분석)
+
+빅데이터 / AI
+
+교재
+Python 개발환경
+- Python 설치
+- IDE(통합개발환경)
+- 다양한 모듈
+- Anaconda Distribution(https://www.anaconda.com/products/distribution다운로드)
+	justme -> 경로 -> c:밑지정 -> 둘다체크 ->  마지막 체크 두개해제 
+	주피터 노트북 크롬으로 실행 -> new -> 디렉토리 생성 -> 체크 후 이름변경
+	디렉토리 접근 후 new python파일 생성 -> 파일이름 클릭하여 네임 변경
+	Markdown 파일주제 헤드
+
+ Hadoop 실행환경(하드웨어)
+   - 메모리 16GB 이상
+   - 메모리 16GB 미만에서는 실행 중 멈추는 현상 일어남.
+
+ Java상수 : float PI = 3.141592F
+

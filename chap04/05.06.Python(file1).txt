@@ -1,0 +1,52 @@
+import mymodule 
+
+mymodule.변수
+mymodule.함수()
+
+import mymodule as mm
+mm.변수
+mm.함수()
+
+from mymodule import *
+
+# emp.py 파일안에 Emp 클래스 정의하고 앞에서 작성된 프로그램 실행하기.
+
+from emp import Emp
+
+random의 choice함수는 변수에 들어있는 값 중 하나를 선택하여 뽑아주는 것.
+
+----------------------------------------------------------------------------------------------------------------------------
+
+파일 읽기
+with절
+with open('파일명.txt') as file_object:	# file_object에 파일정보를 넣는다. read(읽기)는 module값이 지정되있다.
+	contents = file_object.read()	# 파일정보를 contents에 .read()를 사용하여 정보를 저장한다.
+print(contents)			# 저장된 파일정보를 출력한다.
+
+Python은 with절을 사용하면, 따로 close를 하지 않아도, 자동으로  close를 해준다.
+
+- 파일경로를 변수에 저장 후 파일 정보 가져오기
+file_path = '/home/ehmatthes/other_files/text_files/filename.txt'
+with open(file_path) as file_object:
+
+- 한행한행 씩 가져올려면,
+filename = 'pi_digits.txt'
+
+with open(filename) as file_object:
+	for line in file_object:
+	print(line)
+
+
+- 가져온 파일 정보 공백 제거
+with open(filename) as file_object:
+	for line in file_object:
+	print(line.rstrip())
+
+- 파일 정보의 전체 행을 리스트로 가져오고 공백 제거
+filename = 'pi_digits.txt'
+with open(filename) as file_object:
+	lines = file_object.readlines()
+
+for line in lines:
+print(line.rstrip())
+

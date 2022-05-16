@@ -1,0 +1,38 @@
+python mysql 연동하기
+
+mysql 파이썬 커넥터 설치(Anaconda Prompt에서)
+python -m pip install mysql-connector-python
+
+pip install PyMySQL
+
+# Dictoionary Cursor 생성
+curs = conn.cursor(pymysql.cursors.DictCursor)
+ 
+# SQL 실행
+sql = "SELECT code, name, continent FROM country WHERE code=%s AND continent=%s"
+curs.execute(sql, ('KOR','ASIA'))
+ 
+# 데이타 Fetch
+rows = curs.fetchall()
+for row in rows:
+    print(row)
+    print(row['code'], row['name'], row['continent'])
+
+import pymysql
+ 
+# MySQL Connection 생성
+conn = pymysql.connect(host='localhost', user='root', password='tjoeun',
+                       db='test', charset='utf8')
+ 
+# Update
+sql = "UPDATE user SET phone=%s WHERE num=%s"
+
+with conn.cursor() as cursor:
+    n = cursor.execute(sql, ('010-3333-7777', 14) )
+
+    if n==1:
+        print('수정 성공')
+        conn.commit()
+
+conn.close()
+

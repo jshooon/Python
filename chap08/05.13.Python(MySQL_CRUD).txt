@@ -1,0 +1,21 @@
+MySQL CRUD 실습
+
+user 테이블 사용
+- num, name, phone, email
+
+Jupyter Notebook, Python, PyMySQL 모듈 사용
+
+User 클래스 사용
+Dao 클래스 사용
+기능 : 목록(s), 추가(a), 검색(f), 수정(u), 삭제(d), 종료(x)
+
+1. 프로그램이 시작되면 위에서 제시한 6가지 메뉴가 표시된다
+2. 추가(a) 기능을 구현한다
+   - 키보드에서 num, name, phone, email을 받아서 User객체 초기화, user 테이블에 저장
+3. 목록(s) 기능 구현
+4. 검색(f) 기능 구현(번호/이름으로 검색)
+5. 수정(u)
+   - 키보드에서 num, phone, email을 받아서 기존 정보 갱신
+6. 삭제(d)
+   - 키보드에서 num을 받아서 기존 정보 삭제
+7. 종료(x) x 누르면 프로그램 종료

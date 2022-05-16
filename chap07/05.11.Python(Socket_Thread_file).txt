@@ -1,0 +1,41 @@
+소켓 다중 이용자 환경
+Python MySQL CRUD
+Web Scraping : 
+
+Socket(서버) : 대기용
+ - accept() : 통신용 소켓 리턴, recv(), send()
+
+클라이언트 -> 전송 ->  서버 -> 접속자목록 -> 메시지 전송, 메시지 당사자에게는 전송하지 않음.
+
+서버 1개 실행
+ - Jupyter notebook Server_Socket 실행
+
+클라이언트 2개 실행
+- 아나콘다 프롬프트 2개 실행
+- 각각의 프롬프트 clientsocket.py실행
+
+퇴장 메시지 - 당사자 외의 다른 이용자에게 전달 되도록 해보세요
+
+퇴장 > 해당 이용자의 소켓을 서버에서 삭제한다.
+
+3인 접속 환경시
+- 1번 이용자가 3번 이용자에게만 전달하고자 하는 메시지가 있다.
+- 이용자 소켓을 딕셔너리에 번호와 함께 저장한다.
+- 메시지 입력: 3/메시지
+- ChatMsg(msg, to=3)  client
+- soc_dict[3].send(msg) server
+
+첨부파일이 있는 경우
+- 3/메시지/test.jpg
+- ChatMsg(msg, To=3, attach=test.jpg)  client
+
+1번 이용자가 3번 이용자에게만 첨부파일 보내기
+n,msg,fname = '3/msg/fname'.split('/')
+with open('test.jpg', 'rb') as fin:
+    img_data = fin.read()
+
+받은파일 저장하기.
+
+파일이름:copy.jpg
+
+python exam07(Client).py

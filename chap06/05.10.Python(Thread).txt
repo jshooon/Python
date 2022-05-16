@@ -1,0 +1,44 @@
+jupyter notebook --> Python
+# Thread, Runnable, run()
+# Process : 현재 실행중인 프로그램
+# Thread : Process 안에서 동시에 실행 가능한 소규모 Process
+
+.daemon=True 설정한다면, 부모Thread(MainThread)가 끝나면 자식Thread(가상Thread)도 종료된다.
+
+우리가 사용하는 일반적인 코딩은 
+순차처리이다.
+하지만 병행처리가 필요할 시 병행처리를 한다.
+
+# 함수 Thread타겟 하는법
+ex)
+def t1(name):
+    while True:
+        print(name, datetime.datetime.now())
+        time.sleep(1)
+
+th1 = threading.Thread(target=t1, args=('Date Thread',))
+th1.deamon = True
+th1.start()
+
+# 객체 맴버 메소드(내부의 메소드)를 Thread의 타겟으로 하는법
+ex)
+threading.Thread(target=obj.method, args=('Date Thread',))
+
+# 가상의 CPU역할을 하는 클래스 정의
+# java의 extends
+class MyGame(threading.Thread):         # Thread 클래스 상속
+    def __init__(self, name):
+        threading.Thread.__init__(self)
+        print(name, 'instanciated')
+        self.daemon = True
+
+한프로그램에서 두가지 함수를 사용하거나 맴버메소드를 실행할 때에
+Thread를 사용한다.
+ex)채팅 프로그램
+
+def t2(name):
+    i = 0
+    while True:
+        i += 1
+        print(name, i)
+        time.sleep(1)
