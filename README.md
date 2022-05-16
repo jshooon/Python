@@ -1,5 +1,6 @@
 # Python 정규수업
 
+OS : Windows 10
 Languages : Python, SQL   
 Database : MySQL   
 Tools : Jupyter Notebook   
